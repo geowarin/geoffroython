@@ -10,15 +10,28 @@ export default class LastComments extends Component {
     this.state = {
       lastComments: []
     };
-    const testimonialsRef = new Firebase("https://geoffroython.firebaseio.com/testimonials");
+    this.testimonialsRef = new Firebase("https://geoffroython.firebaseio.com/testimonials");
+    this.fetchTestimonials(null, 3);
+  }
 
-    testimonialsRef.orderByChild('date').limitToLast(3).on('value', snapshot => {
-      const lastComments = [];
-      snapshot.forEach(data => {
-        lastComments.push({key: data.key(), data: data.val()});
-      });
-      this.setState({lastComments})
-    })
+  componentWillUnmount() {
+    this.testimonialsRef.off('value');
+  }
+
+  fetchTestimonials (e, nbComments) {
+    if (e) {
+      e.preventDefault();
+    }
+    this.testimonialsRef.off('value');
+    this.testimonialsRef.orderByChild('date').limitToLast(nbComments).on('value', this.updateComments);
+  }
+
+  updateComments (snapshot) {
+    const lastComments = [];
+    snapshot.forEach(data => {
+      lastComments.push({key: data.key(), data: data.val()});
+    });
+    this.setState({lastComments})
   }
 
   render () {
@@ -26,19 +39,26 @@ export default class LastComments extends Component {
       const status = this.getDonatorStatus(comment.data.donation);
       const statusText = ` ${status}`;
 
-      return <Col key={comment.key} xs={4}>
-        <Gravatar email={comment.data.email}/> <strong>{statusText}</strong>
+      const email = comment.data.email;
+        return <Col key={comment.key} xs={4}>
+        <Gravatar email={email}/> <strong>{statusText}</strong>
         <blockquote>
           {comment.data.comment}
-          <footer>{comment.data.email}</footer>
+          <footer>{email.substr(0, email.indexOf('@'))}</footer>
         </blockquote>
       </Col>
     });
 
+    const link = this.state.lastComments.length === 3
+      ? <a href="#lastTestimonials" onClick={(e) => this.fetchTestimonials(e, 1000)}>Voir plus</a>
+      : <a href="#lastTestimonials" onClick={(e) => this.fetchTestimonials(e, 3)}>Voir moins</a>;
+
     return (
       <div>
-        <Row><h2>Dernier témoignages</h2></Row>
+        <Row><h2 id="lastTestimonials">Dernier témoignages</h2></Row>
         <Row> {items} </Row>
+
+        <Row> {link} </Row>
       </div>
     )
   }

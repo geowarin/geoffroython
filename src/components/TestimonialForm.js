@@ -1,6 +1,6 @@
 import React from "react";
 import {Component} from "shasta";
-import {FormGroup, InputGroup, Glyphicon, FormControl, ControlLabel} from "react-bootstrap";
+import {FormGroup, InputGroup, Glyphicon, FormControl, ControlLabel, Checkbox} from "react-bootstrap";
 import Firebase from "firebase";
 import Button from "./Button";
 import axios from "axios";
@@ -45,17 +45,19 @@ export default class TestimonialForm extends Component {
       email: this.state.email,
       comment: this.state.comment,
       donation: parseInt(this.state.donation),
-      date: new Date().getTime()
+      date: new Date().getTime(),
+      present: this.state.present
     });
     this.setState({
       donation: 0,
       email: '',
-      comment: ''
+      comment: '',
+      present: false
     });
     this.fetchJoke();
   }
 
-  openSecretUrl() {
+  openSecretUrl () {
     window.location = 'http://rickrolled.fr/';
   }
 
@@ -66,7 +68,7 @@ export default class TestimonialForm extends Component {
 
         <p>
           Travailler avec Geoffroy a dû être un moment fort dans votre carrière.
-          Il est temps de l'avouer à la face du monde et de passer à la caisse.
+          Il est temps de l'avouer au monde et de passer à la caisse.
         </p>
 
         <p>
@@ -98,6 +100,12 @@ export default class TestimonialForm extends Component {
                 M <Glyphicon glyph="euro"/>
               </InputGroup.Addon>
             </InputGroup>
+          </FormGroup>
+
+          <FormGroup controlId="present">
+            <Checkbox onChange={this.handleChange}>
+              Je serai présent au pot de départ le Vendredi 29 Avril 2016
+            </Checkbox>
           </FormGroup>
 
           <Button loading={false} type="submit" label="Submit"/>

@@ -18,8 +18,8 @@ export default class RootView extends Component {
         <Grid>
           <Col>
             <Jumbotron>
-              <h1>Geoffroython</h1>
-              <p>Le Panama c'est foutu. Investissez dans mon pot de départ.</p>
+              <h1>GeoffroyThon</h1>
+              <p>Le Panama c'est foutu. Investissez dans mon pot de départ et économisez sur votre feuille d'impôts.</p>
 
               <MoneyCounter />
             </Jumbotron>
