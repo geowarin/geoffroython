@@ -1,0 +1,27 @@
+{
+  "name": "geoffroython",
+  "version": "1.0.0",
+  "description": "Describe geoffroython here",
+  "private": true,
+  "scripts": {
+    "build": "nwb build",
+    "clean": "nwb clean",
+    "start": "nwb serve",
+    "test": "nwb test",
+    "test:watch": "nwb test --server"
+  },
+  "dependencies": {
+    "firebase": "^2.4.2",
+    "react": "^15.0.0",
+    "react-bootstrap": "^0.29.0",
+    "react-dom": "^15.0.0",
+    "react-fa": "^4.0.1",
+    "shasta": "github:shastajs/shasta"
+  },
+  "devDependencies": {
+    "glob-loader": "github:contra/glob-loader",
+    "nwb": "0.9.x"
+  },
+  "author": "",
+  "license": "MIT"
+}
