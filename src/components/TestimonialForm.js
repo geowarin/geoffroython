@@ -10,7 +10,8 @@ export default class TestimonialForm extends Component {
     super(...args);
     this.state = {
       donation: 0,
-      testimonialProposition: ''
+      testimonialProposition: '',
+      present: false
     }
   }
 
@@ -37,6 +38,14 @@ export default class TestimonialForm extends Component {
       [e.target.id]: value
     });
   }
+
+  handleCheckboxChange (e) {
+    var value = e.target.checked;
+    this.setState({
+      [e.target.id]: value
+    });
+  }
+
 
   onSubmit (e) {
     e.preventDefault();
@@ -102,11 +111,9 @@ export default class TestimonialForm extends Component {
             </InputGroup>
           </FormGroup>
 
-          <FormGroup controlId="present">
-            <Checkbox onChange={this.handleChange}>
-              Je serai présent au pot de départ le Vendredi 29 Avril 2016
-            </Checkbox>
-          </FormGroup>
+          <Checkbox id="present" onChange={this.handleCheckboxChange} checked={this.state.present}>
+            🍺 Je serai présent au pot de départ le Vendredi 29 Avril 2016
+          </Checkbox>
 
           <Button loading={false} type="submit" label="Submit"/>
         </form>
