@@ -22,9 +22,12 @@ export default class LastComments extends Component {
   }
 
   render () {
-    const items = this.state.lastComments.map(comment => {
+    const items = this.state.lastComments.reverse().map(comment => {
+      const status = this.getDonatorStatus(comment.data.donation);
+      const statusText = ` ${status}`;
+
       return <Col key={comment.key} xs={4}>
-        <Gravatar email={comment.data.email}/>
+        <Gravatar email={comment.data.email}/> <strong>{statusText}</strong>
         <blockquote>
           {comment.data.comment}
           <footer>{comment.data.email}</footer>
@@ -34,9 +37,20 @@ export default class LastComments extends Component {
 
     return (
       <div>
-        <Row><h2>Latest testimonials</h2></Row>
+        <Row><h2>Dernier témoignages</h2></Row>
         <Row> {items} </Row>
       </div>
     )
+  }
+
+  getDonatorStatus (donation) {
+    if (donation > 10000) return 'Généreux donateur';
+    else if (donation > 1000) return 'Un mec bien';
+    else if (donation > 100) return 'Près de ses sous';
+    else if (donation === 42) return 'Cool Boy';
+    else if (donation > 50) return 'A raté sa vie';
+    else if (donation > 10) return 'Gros Radin';
+    else if (donation > 0) return 'Pauvre';
+    return 'Personage négatif'
   }
 }

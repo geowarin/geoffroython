@@ -1,6 +1,7 @@
 import React from "react";
 import {Provider, Component, PropTypes} from "shasta";
-import TestimonialForm from "./components/PersonForm";
+import MoneyCounter from "./components/MoneyCounter";
+import TestimonialForm from "./components/TestimonialForm";
 import LastComments from "./components/LastComments";
 import {Grid, Col, Row, Jumbotron} from "react-bootstrap";
 
@@ -19,6 +20,8 @@ export default class RootView extends Component {
             <Jumbotron>
               <h1>Geoffroython</h1>
               <p>Le Panama c'est foutu. Investissez dans mon pot de départ.</p>
+
+              <MoneyCounter />
             </Jumbotron>
           </Col>
           <Row>
