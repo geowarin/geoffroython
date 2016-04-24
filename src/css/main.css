@@ -1,3 +1,8 @@
-.red {
-  color: red;
+.carousel {
+  width: 900px;
+  margin: auto;
+}
+
+.space-top {
+  margin-top: 20px;
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import {Provider, Component, PropTypes} from "shasta";
-import PersonForm from "./components/PersonForm";
-import CommentCarousel from "./components/CommentsCarousel";
+import TestimonialForm from "./components/PersonForm";
+import LastComments from "./components/LastComments";
 import {Grid, Col, Row, Jumbotron} from "react-bootstrap";
 
 export default class RootView extends Component {
@@ -21,12 +21,16 @@ export default class RootView extends Component {
               <p>Le Panama c'est foutu. Investissez dans mon pot de départ.</p>
             </Jumbotron>
           </Col>
-          <CommentCarousel />
-          <Col>
-            <Row>
-              <PersonForm />
-            </Row>
-          </Col>
+          <Row>
+            <Col xs={12}>
+              <LastComments />
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={12} className="space-top">
+              <TestimonialForm />
+            </Col>
+          </Row>
         </Grid>
       </Provider>
     )
