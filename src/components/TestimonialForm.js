@@ -1,8 +1,7 @@
 import React from "react";
 import {Component} from "shasta";
-import {FormGroup, InputGroup, Glyphicon, FormControl, ControlLabel, Checkbox} from "react-bootstrap";
+import {FormGroup, InputGroup, Glyphicon, FormControl, ControlLabel, Checkbox, Button} from "react-bootstrap";
 import Firebase from "firebase";
-import Button from "./Button";
 import axios from "axios";
 
 export default class TestimonialForm extends Component {
@@ -115,7 +114,7 @@ export default class TestimonialForm extends Component {
             🍺 Je serai présent au pot de départ le Vendredi 29 Avril 2016
           </Checkbox>
 
-          <Button loading={false} type="submit" label="Submit"/>
+          <Button type="submit">Envoyer</Button>
         </form>
       </div>
     )

@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "build": "nwb build",
+    "publish": "npm run build && gh-pages-deploy",
     "clean": "nwb clean",
     "start": "nwb serve",
     "test": "nwb test",
@@ -16,10 +17,10 @@
     "react": "^15.0.0",
     "react-bootstrap": "^0.29.0",
     "react-dom": "^15.0.0",
-    "react-fa": "^4.0.1",
     "shasta": "github:shastajs/shasta"
   },
   "devDependencies": {
+    "gh-pages-deploy": "^0.4.2",
     "glob-loader": "github:contra/glob-loader",
     "nwb": "0.9.x"
   },

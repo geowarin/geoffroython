@@ -70,7 +70,7 @@ export default class LastComments extends Component {
     else if (donation === 42) return 'Cool Boy';
     else if (donation > 50) return 'A raté sa vie';
     else if (donation > 10) return 'Gros Radin';
-    else if (donation > 0) return 'Pauvre';
+    else if (donation >= 0) return 'Pauvre';
     return 'Personage négatif'
   }
 }
